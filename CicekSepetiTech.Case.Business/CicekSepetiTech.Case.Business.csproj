@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CicekSepetiTech.Case.Data\CicekSepetiTech.Case.Data.csproj" />
+    <ProjectReference Include="..\CicekSepetiTech.Case.Domain\CicekSepetiTech.Case.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

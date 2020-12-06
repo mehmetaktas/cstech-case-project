@@ -1,0 +1,35 @@
+version: '3.4'
+
+volumes:
+   dbdata:
+
+services:
+    db:
+        image: "mcr.microsoft.com/mssql/server:2017-latest"
+        container_name: mssqlaliases
+        environment:
+          ACCEPT_EULA: Y
+          SA_PASSWORD: chz->tYUJV=GU^Hy2n
+        ports:
+          - "5454:1433"
+        networks:
+          database:
+            aliases:
+              - mssqlaliases
+
+    ciceksepetitech.case.api:
+        depends_on:
+           - db
+        image: ${DOCKER_REGISTRY-}ciceksepetitechcaseapi
+        build:
+          context: .
+          dockerfile: CicekSepetiTech.Case.Api/Dockerfile
+        ports:
+          - "8080:80"
+        environment:
+          - ASPNETCORE_ENVIRONMENT=Development
+        networks:
+          - database
+
+networks:
+  database:
